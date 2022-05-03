@@ -42,18 +42,22 @@ const renderToDom = (divId, textToRender) => {
   selectedElement.innerHTML = textToRender;
 };
 
+// Entrance Button:
+function enterBtn() {
+  document.querySelector('#studentCards').style.display= 'none';
+}
 
 // Form:
 const welcomeForm = () => {
-  let domString = `<form class="row gy-2 gx-3 align-items-center">
-  <div class="col-auto">
-    <label class="visually-hidden" for="autoSizingInput">Name</label>
-    <input type="text" class="form-control" id="autoSizingInput" placeholder="Student Name">
+  let domString = `
+  <h3>Welcome, Students...</h3>
+  <form class="row g-3">
+  <div class="col-12">
+    <label for="studentName" class="form-label">Enter your name to find out where you belong...</label>
+    <input type="text" class="form-control" id="studentName" placeholder="Your Name Here">
   </div>
-  <div class="col-auto">
-  </div>
-  <div class="col-auto">
-    <button type="sort" class="btn btn-primary">Sort!</button>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Begin Sorting</button>
   </div>
 </form>`
 
