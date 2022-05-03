@@ -24,13 +24,13 @@ const students = [{
 },
 {
   id: 5,
-  name: "Cho",
+  name: "Chad",
   house: "ravenclaw",
   expelled: false
 },
 {
   id: 6,
-  name: "Luna",
+  name: "Lilly",
   house: "ravenclaw",
   expelled: true
 }
@@ -49,16 +49,6 @@ const welcomeForm = () => {
   <div class="col-auto">
     <label class="visually-hidden" for="autoSizingInput">Name</label>
     <input type="text" class="form-control" id="autoSizingInput" placeholder="Student Name">
-  </div>
-  <div class="col-auto">
-    <label class="visually-hidden" for="autoSizingSelect">Preference</label>
-    <select class="form-select" id="autoSizingSelect">
-      <option selected>Choose...</option>
-      <option value="1">Gryffindor</option>
-      <option value="2">HufflePuff</option>
-      <option value="3">Ravenclaw</option>
-      <option value="4">Slytherin</option>
-    </select>
   </div>
   <div class="col-auto">
   </div>
@@ -86,7 +76,7 @@ renderToDom("#btnRow", domString)
 
 
 // Student Cards: 
-const renderStudents = (array) => {
+let renderStudents = (array) => {
   let domString = '';
   for (let student of array) {
     domString += `<div class="card" style="width: 18rem;">
@@ -103,47 +93,61 @@ const renderStudents = (array) => {
 
 
 // Voldemort Army Cards:
-// const renderVoldy = (array) => {
-//   let domString = '';
-//   for (let moldy of array) {
-//     if (moldy.expelled === true) {
-//     domString += `<div class="card" style="width: 18rem;">
-//     <img src="..." class="card-img-top" alt="...">
-//     <div class="card-body">
-//       <h5 class="card-title">${moldy.name}</h5>
-//       <p class="card-text">${moldy.house}</p>
-//       <p class="card-text">Expelled!</p>
-//     </div>
-//   </div>`
-//     }
-//   }
-//   renderToDom('#voldyCards', domString);
-// }
-
-
+const renderVoldy = (array) => {
+  let domString = '';
+  for (let moldy of array) {
+    if (moldy.expelled === true) {
+    domString += `<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${moldy.name}</h5>
+      <p class="card-text">${moldy.house}</p>
+      <p class="card-text">Expelled!</p>
+    </div>
+  </div>`
+    }
+  }
+  renderToDom('#voldyCards', domString);
+}
 
 // Event Listeners:
+
 const eventListeners = () => {
   document.querySelector('#btnRow').addEventListener('click', (e) => {
-    if (e.target.id === "all") {
-      renderStudents(students);
-    } else if (e.target.id) {
-      const houses = students.filter(taco => {
-        console.log(taco.house, e.target.id);
-        return (taco.house === e.target.id)})
-      renderStudents(houses);
-      console.log(houses);
-    }
-  })};
+  if (e.target.id === "all") {
+    renderStudents(students);
+  } else if (e.target.id === "gryffindor") {
+    const gryffindor = students.filter(taco => taco.house === "gryffindor");
+    renderStudents(gryffindor);
+  } else if (e.target.id === "hufflepuff") {
+    const hufflepuff = students.filter(taco => taco.house === "hufflepuff");
+    renderStudents(hufflepuff);
+  } else if (e.target.id === "ravenclaw") {
+    const ravenclaw = students.filter(taco => taco.house === "ravenclaw");
+    renderStudents(ravenclaw);
+  } else if (e.target.id === "slytherin") {
+    const slytherin = students.filter(taco => taco.house === "slytherin");
+    renderStudents(slytherin);
+  }
+})
+};
 
-
+// Working on Hiding/Showing Content...
+// const hideContent = () => {
+//   const hide = document.getElementById("studentCards")
+//   if (hide.style.display === "none") {
+//     hide.style.display = "block";
+//   }else {
+//     hide.style.display ="none";
+//   }
+// }
 
 const startApp = () => {
   welcomeForm()
   filterBtns()
   renderStudents(students)
-  // renderVoldy(students)
-  
+  renderVoldy(students)
   eventListeners()
+  // hideContent();
 };
-startApp()
+startApp();
