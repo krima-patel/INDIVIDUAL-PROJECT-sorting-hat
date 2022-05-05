@@ -37,7 +37,11 @@ const students = [
   },
 ];
 
-let houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+const expelledStudents = [];
+console.log(students);
+
+const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+
 
 // UTILITY Function:
 const renderToDom = (divId, textToRender) => {
@@ -77,9 +81,9 @@ const filterBtns = () => {
 };
 
 // Student Cards:
-let renderStudents = (array) => {
+let renderStudents = () => {
   let domString = "";
-  for (let student of array) {
+  for (let student of students) {
     domString += `<div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
@@ -93,9 +97,9 @@ let renderStudents = (array) => {
 };
 
 // Voldemort Army Cards:
-const renderVoldy = (array) => {
+const renderVoldy = () => {
   let domString = "";
-  for (let moldy of array) {
+  for (let moldy of students) {
     if (moldy.expelled === true) {
       domString += `<div class="card" style="width: 18rem;">
     <img src="..." class="card-img-top" alt="...">
@@ -133,16 +137,33 @@ const eventListeners = () => {
   // Working on Hiding/Showing Content...
   document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
-
+  const newStudent = {
+    id: students.length+1,
+    name: document.querySelector('#studentName').value,
+    house: houses[Math.floor(Math.random() * houses.length)],
+    expelled: false,
+  }
+  students.push(newStudent);
+  // renderStudents(newStudent);
+  console.log(newStudent);
+  if (newStudent.expelled === true) {
+    renderVoldy(newStudent);
+  } else if (newStudent.expelled !== true) {
+    renderStudents(newStudent);
+  } else {
+    console.log("Something went wrong...")
+  }
   document.querySelector("#studentCards").style.visibility = "visible";
   document.querySelector("#voldyCards").style.visibility = "visible";
   document.querySelector("#btnRow").style.visibility = "visible";
+  
   });
 };
 function hiddenElements() {
   document.querySelector("#studentCards").style.visibility = "hidden";
   document.querySelector("#voldyCards").style.visibility = "hidden";
   document.querySelector("#btnRow").style.visibility = "hidden";
+  
 }
 
 const startApp = () => {
