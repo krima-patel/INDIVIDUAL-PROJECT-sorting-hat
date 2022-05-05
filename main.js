@@ -37,6 +37,8 @@ const students = [
   },
 ];
 
+let houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+
 // UTILITY Function:
 const renderToDom = (divId, textToRender) => {
   const selectedElement = document.querySelector(divId);
@@ -83,7 +85,7 @@ let renderStudents = (array) => {
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
-      <a href="#" class="btn btn-primary">Expel</a>
+      <button id="expel--${student.name}" class="btn btn-primary">Expel</button>
     </div>
   </div>`;
   }
@@ -100,7 +102,7 @@ const renderVoldy = (array) => {
     <div class="card-body">
       <h5 class="card-title">${moldy.name}</h5>
       <p class="card-text">${moldy.house}</p>
-      <p class="card-text">Expelled!</p>
+      <h4 class="card-text">Expelled!</h4>
     </div>
   </div>`;
     }
@@ -130,11 +132,11 @@ const eventListeners = () => {
 
   // Working on Hiding/Showing Content...
   document.querySelector("form").addEventListener("submit", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    document.querySelector("#studentCards").style.visibility = "visible";
-    document.querySelector("#voldyCards").style.visibility = "visible";
-    document.querySelector("#btnRow").style.visibility = "visible";
+  document.querySelector("#studentCards").style.visibility = "visible";
+  document.querySelector("#voldyCards").style.visibility = "visible";
+  document.querySelector("#btnRow").style.visibility = "visible";
   });
 };
 function hiddenElements() {
