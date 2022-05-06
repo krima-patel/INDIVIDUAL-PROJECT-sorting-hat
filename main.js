@@ -52,10 +52,10 @@ const renderToDom = (divId, textToRender) => {
 // Form:
 const welcomeForm = () => {
   let domString = `
-  <h3>Welcome, Students...</h3>
+  <h2>Where does your future lie?</h2>
   <form id="form" class="row g-3">
   <div class="col-12">
-    <label for="studentName" class="form-label">Enter your name to find out where you belong...</label>
+    <h3><label for="studentName" class="form-label">Enter your name to find out where you belong...</label></h3>
     <input type="text" class="form-control" id="studentName" placeholder="Your Name Here">
   </div>
   <div class="col-12">
@@ -69,13 +69,11 @@ const welcomeForm = () => {
 // Buttons:
 const filterBtns = () => {
   let domString = `
-  <div class="d-grid gap-2 d-md-block">
-  <button class="btn btn-primary" type="button" id="gryffindor">Gryffindor</button>
-  <button class="btn btn-primary" type="button" id="hufflepuff">Hufflepuff</button>
-  <button class="btn btn-primary" type="button" id="ravenclaw">Ravenclaw</button>
-  <button class="btn btn-primary" type="button" id="slytherin">Slytherin</button>
-  <button class="btn btn-primary" type="button" id="all">All</button>
-</div>
+  <button type="button" id="gryffindor">Gryffindor</button>
+  <button type="button" id="hufflepuff">Hufflepuff</button>
+  <button type="button" id="ravenclaw">Ravenclaw</button>
+  <button type="button" id="slytherin">Slytherin</button>
+  <button type="button" id="all">All</button>
 `;
   renderToDom("#btnRow", domString);
 };
@@ -89,7 +87,7 @@ let renderStudents = () => {
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
-      <button id="expel--${student.name}" class="btn btn-primary">Expel</button>
+      <button id="expel--${student.id}" class="btn btn-primary">Expel</button>
     </div>
   </div>`;
   }
@@ -144,7 +142,7 @@ const eventListeners = () => {
     expelled: false,
   }
   students.push(newStudent);
-  // renderStudents(newStudent);
+  renderStudents(newStudent);
   console.log(newStudent);
   if (newStudent.expelled === true) {
     renderVoldy(newStudent);
@@ -153,6 +151,24 @@ const eventListeners = () => {
   } else {
     console.log("Something went wrong...")
   }
+
+  document.querySelector('#studentCards').addEventListener("click", (e) => {
+    if (e.target.id.includes("expel")) {
+      const [method, id] = e.target.id.split("--");
+      let index = students.findIndex((taco) => taco.id === parseInt(id));
+      const exp = (students[index]).expelled === true;
+      expelledStudents.push(students[index]);
+      students.splice(index, 1);
+      console.log(students);
+      
+      console.log(index);
+      renderVoldy(expelledStudents);
+      console.log(expelledStudents);
+      renderStudents(students);
+    }
+    
+  })
+
   document.querySelector("#studentCards").style.visibility = "visible";
   document.querySelector("#voldyCards").style.visibility = "visible";
   document.querySelector("#btnRow").style.visibility = "visible";

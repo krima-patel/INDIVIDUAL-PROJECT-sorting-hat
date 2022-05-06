@@ -1,13 +1,31 @@
 h1 {
   text-align: center;
+  font-weight: bold;
   font-family:'Times New Roman', Times, serif;
   background-color: rgb(206, 206, 206);
 }
 
+h2 {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h3 {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 #btnRow {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: space-evenly;
+  margin-top: 30px;
 }
 
 .studentList {
@@ -20,4 +38,61 @@ h1 {
   display: flex;
   flex-direction: row;
   margin-top: 30px;
+}
+
+#studentForm {
+  text-align: center;
+}
+
+#sort-btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: larger;
+}
+
+#gryffindor {
+  background-color: maroon;
+  border-color: maroon;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#hufflepuff {
+  background-color: rgb(247, 211, 55);
+  border-color: rgb(247, 211, 55);;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#ravenclaw {
+  background-color: rgb(29, 29, 65);
+  border-color: rgb(29, 29, 65);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#slytherin {
+  background: green;
+  border-color: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#all {
+  padding: 10px 20px;
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
 }
