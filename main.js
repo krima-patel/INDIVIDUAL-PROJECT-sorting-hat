@@ -62,7 +62,8 @@ const welcomeForm = () => {
     <input type="text" class="form-control" id="studentName" placeholder="Your Name Here">
   </div>
   <div class="col-12">
-    <button type="submit" id="sort-btn">Begin Sorting</button>
+    <button type="submit" id="sort-btn">Begin Sorting 🧙</button>
+    <img src="https://cdna.artstation.com/p/assets/images/images/019/078/702/original/blake-johnson-animation-test.gif?1561932267">
   </div>
 </form>`;
 
@@ -104,11 +105,11 @@ const renderVoldy = (array) => {
   let domString = "";
   for (let moldy of array) {
       domString += `<div class="card" style="width: 18rem;">
-    <img src="$..." class="card-img-top" alt="...">
+    <img src="https://img-s3.onedio.com/id-54d4a175b6906c841d6b8b36/rev-1/w-635/listing/f-jpg-webp/s-65a8dadabf3831e5160e396690d238dbad37be5c.webp" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">${moldy.name}</h5>
       <p class="card-text">${moldy.house}</p>
-      <h4 class="card-text">Expelled!</h4>
+      <h4 class="card-text">Expelled! 👽🐍🪄</h4>
     </div>
   </div>`;
     }
